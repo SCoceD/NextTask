@@ -2,7 +2,7 @@ package com.javarush.task.task33.task3309;
 
 //            '><><><<>>--><<--<<asdadasp;amv;s,dc'.a/>?>?>?>?>>>>>????>>-->>>><<--<<'
 //            >>--> || <--<<
-public class NewFile {
+public class searchArrowsInString {
     public static void main(String[] args) {
         String str = "'><><><<>>--><<--<<asdadasp;amv;s,dc'.a/>?>?>?>?>>>>>????>>-->>>><<--<<'";
         int positionIndex = 0;
