@@ -10,6 +10,7 @@ public class Stars {
     public static void main(String[] args) throws IOException {
         BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
         int countStars = Integer.parseInt(reader.readLine());
+        reader.close();
         for (int i = 0; i < 10; i++) {
             System.out.print("*");
         }

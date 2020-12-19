@@ -8,6 +8,7 @@ public class AboutDigitOnScreen {
     public static void main(String[] args) throws IOException {
         BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
         int countFromUser = Integer.parseInt(reader.readLine());
+        reader.close();
         for (int i = 1; i <= countFromUser; i++) {
             System.out.println(i);
         }
