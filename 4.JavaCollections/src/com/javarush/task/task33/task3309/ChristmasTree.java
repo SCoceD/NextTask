@@ -4,12 +4,10 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 
-public class ChristmassTree {
-    public static void main(String[] args) throws IOException {
-        BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
-        int a = Integer.parseInt(reader.readLine());
-        reader.close();
+public class ChristmasTree {
+    public void start() throws IOException {
         String s = "*";
+        int a = getHeightOfChristmasTrees();
         for (int i = 0; i < a; i++) {
             for (int j = 0; j < a * 2; j++) {
                 if (j == a - s.length() / 2) {
@@ -25,5 +23,9 @@ public class ChristmassTree {
             System.out.print(" ");
         }
         System.out.print("*");
+    }
+
+    private int getHeightOfChristmasTrees() throws IOException {
+        return Integer.parseInt(new BufferedReader(new InputStreamReader(System.in)).readLine());
     }
 }

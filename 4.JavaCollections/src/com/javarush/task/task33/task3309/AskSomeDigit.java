@@ -4,12 +4,33 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 
+/**
+ * This class get a number from User and show on screen this number after increase by 1.
+ */
 public class AskSomeDigit {
-    public static void main(String[] args) throws IOException {
-        BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
+    public void start() throws IOException {
+        returnIncreasedDigit();
+    }
+
+    /**
+     * get a number from User
+     *
+     * @return int
+     * @throws IOException
+     */
+    private int scanner() throws IOException {
         System.out.println("эй, введи число:");
-        System.out.println("молодец! на еденицу больше будет " + (Integer.parseInt(reader.readLine()) + 1));
-        reader.close();
+        int digitFormUser = Integer.parseInt(new BufferedReader(new InputStreamReader(System.in)).readLine());
+        return digitFormUser;
+    }
+
+    /**
+     * Increase number from User by 1 and show it on screen.
+     *
+     * @throws IOException
+     */
+    private void returnIncreasedDigit() throws IOException {
+        System.out.println("молодец! на еденицу больше будет " + (scanner() + 1));
     }
 }
 

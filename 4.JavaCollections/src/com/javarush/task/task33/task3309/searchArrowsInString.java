@@ -1,25 +1,57 @@
 package com.javarush.task.task33.task3309;
 
-//            '><><><<>>--><<--<<asdadasp;amv;s,dc'.a/>?>?>?>?>>>>>????>>-->>>><<--<<'
-//            >>--> || <--<<
+/**
+ * This function counts how many arrows in String
+ */
 public class searchArrowsInString {
-    public static void main(String[] args) {
-        String str = "'><><><<>>--><<--<<asdadasp;amv;s,dc'.a/>?>?>?>?>>>>>????>>-->>>><<--<<'";
-        int positionIndex = 0;
-        int positionIndex1 = 0;
-        int count = 0;
-        while (str.indexOf(">>-->", positionIndex) != -1) {
-            if (str.indexOf(">>-->", positionIndex) != -1) {
-                positionIndex = str.indexOf(">>-->", positionIndex) + 1;
+    int positionIndex = 0;
+    int count = 0;
+    final String str = "'><><><<>>--><<--<<asdadasp;amv;s,dc'.a/>?>?>?>?>>>>>????>>-->>>><<--<<'";
+
+    /**
+     * Start
+     */
+    public void start() {
+        System.out.println("Count of left arrows: " + leftArrow(str));
+        System.out.println("Count of right arrows: " + rightArrow(str));
+    }
+
+    /**
+     * This function counts of left arrow
+     *
+     * @param args
+     * @return int
+     */
+    private int leftArrow(String args) {
+        positionIndex = 0;
+        count = 0;
+
+        while (args.indexOf(">>-->", positionIndex) != -1) {
+            if (args.indexOf(">>-->", positionIndex) != -1) {
+                positionIndex = args.indexOf(">>-->", positionIndex) + 1;
                 count++;
             }
         }
-        while (str.indexOf("<--<<", positionIndex1) != -1) {
-            if (str.indexOf("<--<<", positionIndex1) != -1) {
-                positionIndex1 = str.indexOf("<--<<", positionIndex1) + 1;
+        return count;
+    }
+
+    /**
+     * This function counts of right arrow
+     *
+     * @param args
+     * @return int
+     */
+    private int rightArrow(String args) {
+        positionIndex = 0;
+        count = 0;
+
+
+        while (args.indexOf("<--<<", positionIndex) != -1) {
+            if (args.indexOf("<--<<", positionIndex) != -1) {
+                positionIndex = args.indexOf("<--<<", positionIndex) + 1;
                 count++;
             }
         }
-        System.out.println(count);
+        return count;
     }
 }

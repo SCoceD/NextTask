@@ -4,20 +4,74 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 
+/**
+ * This function get from User ten names of cities and ask about native city of User, if native cities was be enter earlier
+ * function print on the screen information that this city knows, or dont know if native city newer entered before
+ */
 public class TaskAboutCities {
-    public static void main(String[] args) throws IOException {
-        BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
+    private String[] Cities;
+    private String nativeCity;
+
+    /**
+     * Start
+     *
+     * @throws IOException
+     */
+    public void start() throws IOException {
+        initCitiesArr();
+        initNativeCities();
+        searchInArr();
+    }
+
+    /**
+     * Just Scanner
+     *
+     * @return
+     * @throws IOException
+     */
+    private String scanner() throws IOException {
+        return new BufferedReader(new InputStreamReader(System.in)).readLine();
+    }
+
+    /**
+     * This function asks to enter 10 city names add it to array
+     *
+     * @throws IOException
+     */
+    private void initCitiesArr() throws IOException {
         System.out.println("Введите 10 названий городов:");
-        String [] cities = new String[]{reader.readLine(), reader.readLine(), reader.readLine(), reader.readLine(), reader.readLine(), reader.readLine(), reader.readLine(), reader.readLine(), reader.readLine(), reader.readLine()};
+
+        Cities = new String[10];
+        for (int i = 0; i <
+                Cities.length; i++) {
+
+            Cities[i] = scanner();
+        }
+    }
+
+    /**
+     * This function asks about native cities and initialize variable nativeCity
+     *
+     * @throws IOException
+     */
+    private void initNativeCities() throws IOException {
         System.out.println("Введите название родного города:");
-        String nativeCiti = reader.readLine();
-        reader.close();
-        for (int i = 0; i < cities.length; i++) {
-            if (cities[i].equals(nativeCiti)) {
+        nativeCity = scanner();
+    }
+
+    /**
+     * Search in array is there a nativeCity and say about result
+     */
+    private void searchInArr() {
+        for (int i = 0; i <
+                Cities.length; i++) {
+            if (
+                    Cities[i].equals(nativeCity)) {
                 System.out.println("я знаю твой город");
                 break;
             }
-            if (i == cities.length-1){
+            if (i ==
+                    Cities.length - 1) {
                 System.out.println("я не знаю твой город");
             }
         }

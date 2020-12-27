@@ -5,31 +5,71 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.Arrays;
 
+/**
+ * This is a class simulate "cash deposit Machine"
+ */
 public class Bankomat {
-    public static void main(String[] args) throws IOException {
-        BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
+    BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
+    int[] cards = new int[10];
+
+    /**
+     * Start this function
+     *
+     * @throws Exception
+     */
+    public void start() throws Exception {
+        cards[getCardNumber()] = sumForDeposit();
+        showBalanceAllCards();
+        showSumOnAllCard();
+        reader.close();
+    }
+
+    /**
+     * This function get card number (0 -10) from User for deposit cash
+     *
+     * @return int
+     * @throws Exception
+     */
+    private int getCardNumber() throws Exception {
         int cardNumber;
-        int amount;
-        int [] cards = new int[10];
+
         while (true) {
             System.out.println("vvedi nomer kartochki:");
-            cardNumber= Integer.parseInt(reader.readLine());
-            if(cardNumber >=0 && cardNumber < 10){
+            cardNumber = Integer.parseInt(reader.readLine());
+            if (cardNumber >= 0 && cardNumber < 10) {
                 break;
             }
         }
+        return cardNumber;
+    }
+
+    /**
+     * This function get cash from User
+     *
+     * @return int
+     * @throws Exception
+     */
+    private int sumForDeposit() throws Exception {
+        int amount;
         while (true) {
             System.out.println("skolko polozhit?");
             amount = Integer.parseInt(reader.readLine());
-            if (amount >= -1000 && amount <= 1000){
-                cards[cardNumber] = amount;
-                break;
+            if (amount >= -1000 && amount <= 1000) {
+                return amount;
             }
         }
-        for (int c : cards){
+    }
+
+    /**
+     * This function show on a screen ballans on all card
+     */
+    private void showBalanceAllCards() {
+        for (int c : cards) {
             System.out.print(c + " ");
         }
-        reader.readLine();
+    }
+
+    private void showSumOnAllCard() {
         System.out.println("\nv summe na vseh kartah " + Arrays.stream(cards).sum());
     }
 }

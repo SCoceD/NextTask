@@ -4,21 +4,51 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 
+/**
+ * This function get size of triangle from User and print on the screen three kind of triangle
+ */
 public class Triangle {
-    public static void main(String[] args) throws IOException {
-        BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
+    int triangleSize;
+    int tempTriangle = 1;
+
+    /**
+     * Start
+     *
+     * @throws IOException
+     */
+    public void start() throws IOException {
+        scanner();
+        printTriangle();
+        printBottomTriangle();
+        printTriangleWithApexOnTheRight();
+    }
+
+    /**
+     * Just scanner
+     *
+     * @throws IOException
+     */
+    private void scanner() throws IOException {
         System.out.println("Подай размер триугольника:");
-        int triangleSize = Integer.parseInt(reader.readLine());
-        reader.close();
-        int tempTriangle = 1;
+        triangleSize = Integer.parseInt(new BufferedReader(new InputStreamReader(System.in)).readLine());
+    }
+
+    /**
+     * Print triangle with apex on the top
+     */
+    private void printTriangle() {
         for (int i = 0; i < triangleSize; i++, tempTriangle++) {
             for (int j = 0; j < tempTriangle; j++) {
                 System.out.print("*");
             }
             System.out.println("");
         }
+    }
 
-        //  Триугольник с вершиной внизу
+    /**
+     * Print triangle with apex on the bottom
+     */
+    private void printBottomTriangle() {
         tempTriangle = triangleSize;
         for (int i = 0; i < triangleSize; i++, tempTriangle--) {
             for (int j = 0; j < tempTriangle; j++) {
@@ -26,8 +56,12 @@ public class Triangle {
             }
             System.out.println("");
         }
+    }
 
-        //  Триугольник с вершиной справа
+    /**
+     * Print triangle with apex on right bottom
+     */
+    private void printTriangleWithApexOnTheRight() {
         for (int i = 0; i < triangleSize; i++) {
             tempTriangle = i;
             for (int j = 0; j < triangleSize; j++) {

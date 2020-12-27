@@ -4,31 +4,49 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 
+/**
+ * This function asks User for the size of the square and print square on the screen
+ */
 public class Square {
-    public static void main(String[] args) throws IOException {
-        BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
+    int squareSize;
+
+    /**
+     * Start
+     *
+     * @throws IOException
+     */
+    public void start() throws IOException {
+        getSizeFromUser();
+        printSquare();
+    }
+
+    /**
+     * Get size of square from User
+     *
+     * @throws IOException
+     */
+    private void getSizeFromUser() throws IOException {
         System.out.println("Задай размер квадрата:");
-        int squareSize = Integer.parseInt(reader.readLine());
-        reader.close();
+        squareSize = Integer.parseInt(new BufferedReader(new InputStreamReader(System.in)).readLine());
+    }
+
+    /**
+     * Print square of the asterisks on the screen
+     */
+    private void printSquare() {
         for (int i = 0; i < squareSize; i++) {
             for (int j = 0; j < squareSize; j++) {
-                System.out.print("*");
+                printAsterisk();
             }
             System.out.println("");
         }
+    }
 
-        // Теперь через while
-
-        int i = 0;
-        while (i < squareSize) {
-            int j = 0;
-            while (j < squareSize) {
-                System.out.print("*");
-                j++;
-            }
-            System.out.println("");
-            i++;
-        }
+    /**
+     * Print one asterisk on the screen
+     */
+    private void printAsterisk() {
+        System.out.print("*");
     }
 }
 

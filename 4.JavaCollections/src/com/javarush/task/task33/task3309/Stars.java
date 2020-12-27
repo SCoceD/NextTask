@@ -2,34 +2,96 @@
 
 package com.javarush.task.task33.task3309;
 
-        import java.io.BufferedReader;
-        import java.io.IOException;
-        import java.io.InputStreamReader;
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
 
+/**
+ * This function print some count of asterisk on the screen
+ */
 public class Stars {
-    public static void main(String[] args) throws IOException {
-        BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
-        int countStars = Integer.parseInt(reader.readLine());
-        reader.close();
-        for (int i = 0; i < 10; i++) {
-            System.out.print("*");
-        }
-        for (int i = 0; i < 100; i++) {
-            System.out.print("*");
-        }
-        for (int i = 0; i < 1000; i++) {
-            System.out.print("*");
-        }
-        //Спросить сколько вести звёздочек
+    int countStars;
+
+    /**
+     * Start
+     *
+     * @throws IOException
+     */
+    public void start() throws IOException {
+        askNumberOfStars();
+        printAsteriskFromUser();
+        printAsteriskFromUserWithWhile();
+        printTenAsterisk();
+        printOneHundredAsterisk();
+        printOneThousandAsterisk();
+    }
+
+    /**
+     * This function ask how many asterisk should be show on the screen
+     *
+     * @throws IOException
+     */
+    private void askNumberOfStars() throws IOException {
         System.out.println("сколько звёздочек хочещь увмдеть");
+        countStars = Integer.parseInt(new BufferedReader(new InputStreamReader(System.in)).readLine());
+    }
+
+    /**
+     * This function print as many asterisk as the user entered
+     */
+    private void printAsteriskFromUser() {
         for (int i = 0; i < countStars; i++) {
-            System.out.println("*");
+            printAsterisk();
         }
-        //Вывести через while
+        System.out.println("");
+    }
+
+    /**
+     * This function print as many asterisk as the user entered with loop while
+     */
+    private void printAsteriskFromUserWithWhile() {
         while (countStars > 0) {
-            System.out.print("*");
+            printAsterisk();
             countStars--;
         }
+        System.out.println("");
+    }
+
+    /**
+     * This function print ten asterisk on the screen
+     */
+    private void printTenAsterisk() {
+        for (int i = 0; i < 10; i++) {
+            printAsterisk();
+        }
+        System.out.println("");
+    }
+
+    /**
+     * This function print one hundred asterisk on the screen
+     */
+    private void printOneHundredAsterisk() {
+        for (int i = 0; i < 100; i++) {
+            printAsterisk();
+        }
+        System.out.println("");
+    }
+
+    /**
+     * This function print one thousand asterisk on the screen
+     */
+    private void printOneThousandAsterisk() {
+        for (int i = 0; i < 1000; i++) {
+            printAsterisk();
+        }
+        System.out.println("");
+    }
+
+    /**
+     * This function print one asterisk on the screen
+     */
+    private void printAsterisk() {
+        System.out.print("*");
     }
 }
 
@@ -49,9 +111,11 @@ public class Stars {
 //    let countStars = +prompt('сколько звёздочек хочещь увмдеть');
 //    for (let i = 0; i < countStars; i++) {
 //    console.log('*');
-//    }
-//    //Вывести через while
+//    }sihjjdjididiuiufioiiusidsia8udodudiiuyee88ydydussywAYTYS6JFKSDZHDJXZHHUHHHYSHYUEW57YEGYZXTTRSHRYWHHHGDRDGGTFGHRPJDDDAAAFHHYIIUOUUU
+// knhkskiolajslill6hdljckdjdpsjsmkjhskhfw,mddfjkdfvcnnzjjjjkjidue7ryiuqhloyy0jhjjksjjhjyudswayiyywyesuyyweeswtywttdsaejljfimfkxdjkdfjchxxcch
+//dklxkdghgfdfddagyekckhdzgxkfivjx,.ckxljgkjjkkjieopq9oipslixvk.xki;oxljcksjhzkjs
+//    //Вывести через whilexkiudiyiuufu888ffhcyuuhigvihitfdeaouytnyjjjklkjhcchuiicfkiofocdoiuuuiisuduuduuyuiuausysiusyhsgahshuhdhghugaytytuyyttd
 //    while (countStars > 0) {
-//    console.put('*');
+//    console.put('*');uiuruueryuruyggfgggggtgtuhhyuuuuhchhjuuyioyijiiyziuutfthjhhsusjghysjhshhduyshhhushhuhhyyyytdyrhyrsjuuidshtjjsuuuiujkuhudhhgj
 //    countStars--;
 //    }
