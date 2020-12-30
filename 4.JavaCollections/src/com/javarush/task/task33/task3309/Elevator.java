@@ -1,93 +1,92 @@
 package com.javarush.task.task33.task3309;
 
-import java.io.BufferedReader;
-import java.io.InputStreamReader;
-
 /**
- * This method simulate communication panel in elevator
+ * Спросить этаж
+ * проверить на валидность
+ * проверить нет требует ли пароля
+ * * если не требует то пишем ок
+ * * если требует то спросить пароль
+ * * * проверить пароль
+ * * * ответить про результат проверки
  */
 public class Elevator {
-    BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
-    int currentFloor;
+    private final MyPrinter myPrinter;
+    private final MyScanner myScanner;
+    private int currentFloor;
+
+    /**
+     * Constructor
+     */
+    public Elevator() {
+        myPrinter = new MyPrinter();
+        myScanner = new MyScanner();
+    }
 
     /**
      * Start
-     *
-     * @throws Exception
      */
-    public void start() throws Exception {
-        requiredFloor();
-        System.out.println("exit");
-
+    public void start() {
+        int desiredFloor;
+        do {
+            String message = "Введите этаж";
+            printer(message);
+            desiredFloor = scanner();
+            message = verifyFloorAndPass(desiredFloor);
+            printer(message);
+        } while (desiredFloor != 0);
     }
 
     /**
-     * Just BufferedReader
+     * Verify floor exists, exists pass for enter on the floor. And if User already on the desired floor
+     *
+     * @param desiredFloor int
+     * @return String
+     */
+    private String verifyFloorAndPass(int desiredFloor) {
+        //Проверка не нажимаешь ли на тукущий этаж
+        if (desiredFloor == currentFloor) {
+            return "Вы уже на " + desiredFloor;
+        }
+        //Проверка на этаж с паролем
+        if (desiredFloor > 3 && desiredFloor < 7) {
+            printer("Введите пароль");
+            boolean temp = checkPass(scanner());
+            if (temp) {
+                currentFloor = desiredFloor;
+                return "ok";
+            }
+            return "не правильный пароль";
+        }
+        currentFloor = desiredFloor;
+        return "ok";
+    }
+
+    /**
+     * Pass checker
+     *
+     * @param passForCheck int
+     * @return boolean
+     */
+    private boolean checkPass(int passForCheck) {
+        int pass = 1337;
+        return pass == passForCheck;
+    }
+
+    /**
+     * Get som value from console
      *
      * @return int
-     * @throws Exception
      */
-    private int skaner() throws Exception {
-        return Integer.parseInt(reader.readLine());
+    private int scanner() {
+        return myScanner.readInt();
     }
 
     /**
-     * Get floor from User and check this information for validation or security request
+     * Print on the screen
      *
-     * @return
-     * @throws Exception
+     * @param s String
      */
-    private int requiredFloor() throws Exception {
-        int floor;
-        do {
-            System.out.println("На какой этаж желаете поехать?");
-            floor = skaner();
-            if (floor == 0) {
-                return 0;
-            } else if (floor == currentFloor) {
-                System.out.println("вы уже на " + currentFloor + "м этаже.");
-            } else if (floor < 0 || floor > 9) {
-                System.out.println("неправильный этаж");
-            } else if (floor >= 4 && floor <= 6) {
-                if (getPass()) {
-                    System.out.println("ok");
-                    currentFloor = floor;
-                } else {
-                    System.out.println("неверный пароль");
-                }
-            }
-            currentFloor = floor;
-        } while (floor < 0 || floor > 9 || floor != 0);
-        return floor;
-    }
-
-    /**
-     * Get password from User and check for validation
-     *
-     * @return
-     * @throws Exception
-     */
-    private boolean getPass() throws Exception {
-        System.out.println("введите пароль: ");
-        int pass = skaner();
-        if (pass == 1337) {
-            return true;
-        }
-        return false;
+    private void printer(String s) {
+        myPrinter.print(s);
     }
 }
-
-//    Solution for JS
-//
-//    let floorFromUser = +prompt('На какой этаж желаете поехать?');
-//    if (floorFromUser < 1 || floorFromUser > 9) {
-//        console.log('неправильный этаж');
-//    } else {
-//            if (floorFromUser >= 4 && floorFromUser <= 6) {
-//                if (+prompt('введите пароль:') == 1337) {
-//                    console.log("ok");
-//                } else {
-//                console.log('неверный пароль');
-//                }
-//            }
-//    }
