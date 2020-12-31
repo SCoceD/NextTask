@@ -1,5 +1,3 @@
-package com.javarush.task.task33.task3309;
-
 import java.util.Arrays;
 import java.util.stream.IntStream;
 
@@ -20,7 +18,6 @@ public class Bankomat {
     private int cardNumber;
 
     /**
-     *
      * Constructor
      */
     Bankomat() {
@@ -56,8 +53,9 @@ public class Bankomat {
      */
     private void showBalanceOnTheAllCards() {
         for (int i : cards) {
-            printer(i);
+            printerInLine(i + " ");
         }
+        printer("");
     }
 
     /**
@@ -65,8 +63,7 @@ public class Bankomat {
      */
     private void putOnTheCard() {
         message = "сколько положить";
-        printer("asd");
-        System.out.println(message);
+        printer(message);
         cards[cardNumber] = scanner();
     }
 
@@ -104,9 +101,11 @@ public class Bankomat {
     }
 
     /**
-     * Print int on the screen
+     * Print in line on the screen
+     *
+     * @param s String
      */
-    private void printer(int i) {
-        myPrinter.printInLine(i);
+    private void printerInLine(String s) {
+        myPrinter.printInLine(s);
     }
 }

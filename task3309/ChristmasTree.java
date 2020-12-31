@@ -1,5 +1,3 @@
-package com.javarush.task.task33.task3309;
-
 /**
  * Получаем размер ёлки от юзера
  * Рисуем ёлку

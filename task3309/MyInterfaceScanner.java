@@ -1,24 +1,22 @@
-package com.javarush.task.task33.task3309;
-
 /**
  * My custom interface for reader
  */
 public interface MyInterfaceScanner {
     /**
      * Read and return String from console
-     * @return
+     * @return String
      */
     String readString();
 
     /**
      * Read and return Integer from console
-     * @return
+     * @return int
      */
     int readInt();
 
     /**
      * Read and return Double from console
-     * @return
+     * @return double
      */
     double readDouble();
 
